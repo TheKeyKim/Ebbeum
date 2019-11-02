@@ -1,12 +1,22 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import Loading from "./Loading"
+import MainNavigation from "./navigation/MainNavigation"
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-    </View>
-  );
+
+export default class App extends React.Component {
+  state = {
+    loading : true
+  }; 
+  test = () => this.setState({loading : false});
+  componentDidMount(){
+    setInterval(this.test, 10);
+  }
+  render(){
+    const { loading } = this.state;
+    return (loading? <Loading /> :
+    <MainNavigation />);
+  }
 }
 
 const styles = StyleSheet.create({
