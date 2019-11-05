@@ -6,16 +6,16 @@ import MainNavigation from "./navigation/MainNavigation"
 
 export default class App extends React.Component {
   state = {
-    loading : true
+    loading : true,
+    first : true
   }; 
   test = () => this.setState({loading : false});
   componentDidMount(){
     setInterval(this.test, 10);
   }
   render(){
-    const { loading } = this.state;
-    return (loading? <Loading /> :
-    <MainNavigation />);
+    const { loading, first } = this.state;
+    return (loading? <Loading /> : <MainNavigation />);
   }
 }
 
