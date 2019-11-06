@@ -31,7 +31,7 @@ export const createStack = (screen, title) =>
                         <View style = {{flex : 1, justifyContent : "center", alignItems : "flex-end", paddingTop : 20, paddingRight : 10}}>
                              <TouchableHighlight
                                 onPress={() => {
-                                    
+                                    alert("개발 중입니다!")
                                 }}
                                 underlayColor="white"
                             >

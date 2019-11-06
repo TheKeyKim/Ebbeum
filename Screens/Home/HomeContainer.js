@@ -56,7 +56,6 @@ export default class HomeContainer extends React.Component{
                 <HomePresenter
                 loading = {loading}
                 main =  {main}/>
-                <Text>{navigation.getParam('t1','시발!')}</Text>
                 <View style = {styles.container}>
                     <Text>나만의 스타일리스트</Text>
                 </View>

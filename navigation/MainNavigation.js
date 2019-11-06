@@ -1,32 +1,39 @@
 import { createStackNavigator } from "react-navigation-stack";
 import { createAppContainer } from "react-navigation";
 import TabNavigation from "./TabNavigation";
-import t1 from "../InformNav/t1";
-import t2 from "../InformNav/t2";
-import t3 from "../InformNav/t3";
-import t4 from "../InformNav/t4";
+import age from "../InformNav/age";
+import confirm from "../InformNav/confirm";
+import gender from "../InformNav/gender";
+import size from "../InformNav/size";
+import tall from "../InformNav/tall";
 
 const MainNavigation = createStackNavigator({
-    t1 : {
-        screen : t1,
+    gender : {
+        screen : gender,
         navigationOptions : {
             header : null
         }
     },
-    t2 : {
-        screen : t2,
+    age : {
+        screen : age,
         navigationOptions : {
             header : null
         }
     },
-    t3 : {
-        screen : t3,
+    tall : {
+        screen : tall,
         navigationOptions : {
             header : null
         }
     },
-    t4 : {
-        screen : t4,
+    size : {
+        screen : size,
+        navigationOptions : {
+            header : null
+        }
+    },
+    confirm : {
+        screen : confirm,
         navigationOptions : {
             header : null
         }
