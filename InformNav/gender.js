@@ -1,11 +1,15 @@
 import React from "react";
 import { Text, View, TouchableHighlight, StyleSheet } from "react-native";
+import { F_GENDER } from "./fontOp";
 
 const styles = StyleSheet.create({
     container : {
         flex : 1,
         justifyContent : "center",
         alignItems : "center",
+    },
+    font : {
+        fontSize : F_GENDER
     }
 })
 
@@ -34,7 +38,8 @@ export default class gender extends React.Component{
         const { gender } = this.state;
         return(
             <View style = {styles.container}>
-                <View style = {{ flexDirection : "row"}}>
+                <Text>당신의 성별은?</Text>
+                <View style = {{ flexDirection : "row", marginTop : 50}}>
                     <TouchableHighlight
                         onPress={() => {
                         this.setMale()
@@ -42,7 +47,7 @@ export default class gender extends React.Component{
                         underlayColor="white"  
                         style = {{margin : 20}}
                         >       
-                            <Text style = {{color : (gender == 'male' ? 'black' : 'grey')}}>남자</Text>
+                            <Text style = {{color : (gender == 'male' ? 'black' : 'grey'), ...styles.font}}>남자</Text>
                     </TouchableHighlight>
                     <TouchableHighlight
                         onPress={() => {
@@ -51,7 +56,7 @@ export default class gender extends React.Component{
                         underlayColor="white"  
                         style = {{margin : 20}}
                         >       
-                            <Text style = {{color : (gender == 'female' ? 'black' : 'grey')}}>여자</Text>
+                            <Text style = {{color : (gender == 'female' ? 'black' : 'grey'), ...styles.font}}>여자</Text>
                     </TouchableHighlight>
                 </View>
                 <TouchableHighlight
@@ -61,7 +66,9 @@ export default class gender extends React.Component{
                     underlayColor="white"  
                     style = {{marginTop : 50}}
                     >       
-                        <Text>확정</Text>
+                    <View style = {{width : 100, height : 100, alignItems : 'center'}}>
+                        <Text>다음</Text>
+                    </View> 
                 </TouchableHighlight>
             </View>
         );

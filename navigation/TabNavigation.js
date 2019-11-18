@@ -42,7 +42,7 @@ const TabNavigation = createBottomTabNavigator(
             }
         },
         Mypage : {
-            screen : createStack(Mypage, "마이페이지"),
+            screen : Mypage,
             navigationOptions : {
                 tabBarIcon : ({focused}) =>
                 <TabIcon style = {{width : 70, height :20}} source = 

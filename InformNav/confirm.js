@@ -14,7 +14,7 @@ export default class gender extends React.Component{
         const { navigation } = this.props;
         return(
             <View style = {styles.container}>
-                <Text>성별 : {global.gender}</Text>
+                <Text>성별 : {(global.gender=='male'?'남자':'여자')}</Text>
                 <Text>나이 : {global.Age} {global.Period}</Text>
                 <Text>키 : {global.TallDec} {global.TallDigit} </Text>
                 <Text>상의사이즈 : {global.SizeUpper}</Text>
@@ -24,8 +24,11 @@ export default class gender extends React.Component{
                     navigation.replace( 'Tabs')
                     }}
                     underlayColor="white"  
+                    style = {{marginTop : 50}}
                     >       
-                        <Text>확정</Text>
+                    <View style = {{width : 100, height : 100, alignItems : 'center'}}>
+                        <Text>다음</Text>
+                    </View> 
                 </TouchableHighlight>
             </View>
         );

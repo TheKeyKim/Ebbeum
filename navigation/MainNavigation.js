@@ -1,3 +1,5 @@
+import React from 'react'
+import {View, Image} from 'react-native'
 import { createStackNavigator } from "react-navigation-stack";
 import { createAppContainer } from "react-navigation";
 import TabNavigation from "./TabNavigation";
@@ -8,6 +10,13 @@ import size from "../InformNav/size";
 import tall from "../InformNav/tall";
 
 const MainNavigation = createStackNavigator({
+    
+    Tabs : {
+        screen : TabNavigation,
+        navigationOptions : {
+            header : null
+        }
+    },
     gender : {
         screen : gender,
         navigationOptions : {
@@ -34,12 +43,6 @@ const MainNavigation = createStackNavigator({
     },
     confirm : {
         screen : confirm,
-        navigationOptions : {
-            header : null
-        }
-    },
-    Tabs : {
-        screen : TabNavigation,
         navigationOptions : {
             header : null
         }
