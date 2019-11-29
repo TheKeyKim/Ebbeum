@@ -1,5 +1,5 @@
 import React from "react" 
-import { Text, View, Image, ScrollView } from "react-native";
+import { Text, View, Image, ScrollView, TouchableHighlight } from "react-native";
 import propTypes from "prop-types";
 import Layout from "../constants/Layout";
 import styled from "styled-components";
@@ -17,17 +17,29 @@ const EventImage = styled.Image`
     border-radius : 20px;
 `;
 
-const SuitSlider = () => (
+const goDetail = ({navigation}) => {
+    navigation.navigate("detail");
+}
+
+const SuitSlider = ({navigation}) => (
         <ScrollView
             horizontal = {true}
             showsHorizontalScrollIndicator = {false}
         >
             <Banner style = {{flex : 1, flexDirection : 'row'}}>
                 <View style = {{flex : 1, width : 80}}>
+                    <TouchableHighlight
+                    onPress={() => {
+                        global.type = "up";
+                        navigation.navigate("detail", {type : 'tops'});
+                    }}
+                    underlayColor="white"  
+                    >       
                     <View style = {{alignItems : "center"}}>
-                        <EventImage source = {require("../assets/suit_upper.png")} />  
-                        <Text>상의</Text>
-                    </View>
+                                <EventImage source = {require("../assets/suit_upper.png")} />  
+                                <Text>상의</Text>
+                            </View> 
+                </TouchableHighlight>
                 </View>
                 <View style = {{flex : 1, width : 80}}>
                     <View style = {{alignItems : "center"}}>

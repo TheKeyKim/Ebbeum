@@ -51,7 +51,7 @@ export default class HomeContainer extends React.Component{
         return (
             <ScrollView style = {{flex :1 , backgroundColor : '#f8f6f6'}}>               
                 <View style = {{paddingTop : 5, backgroundColor : BG_COLOR}}>
-                  <SuitSlider/>
+                  <SuitSlider navigation = {navigation}/>
                 </View>
                 <HomePresenter
                 loading = {loading}

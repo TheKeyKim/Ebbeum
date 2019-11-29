@@ -33,6 +33,17 @@ export default class tall extends React.Component{
         else {
             global.TallDec = tempDec;
             global.TallDigit = tempDigit;
+            var digit = 0;
+            if(tempDigit == "초반"){
+                digit = 0;
+            }
+            else if(tempDigit == "중반"){
+                digit = 5;
+            }
+            else if(tempDigit == "후반"){
+                digit = 8;
+            }
+            global.Tall = tempDec + digit;
             navigation.replace('size');
         }
     }
@@ -44,30 +55,30 @@ export default class tall extends React.Component{
                 <View style = {{flexDirection : 'row', marginTop : 50}}>
                     <TouchableHighlight
                         onPress={() => {
-                            this.inputTallDec('160')
+                            this.inputTallDec(160)
                         }}
                         underlayColor="white"  
                         style = {{flex : 1, alignItems : 'center'}}
                         >       
-                            <Text style = {{color : (tempDec == '160' ? 'black' : 'grey'), ...styles.font}}>160</Text>
+                            <Text style = {{color : (tempDec == 160 ? 'black' : 'grey'), ...styles.font}}>160</Text>
                     </TouchableHighlight>
                     <TouchableHighlight
                         onPress={() => {
-                            this.inputTallDec('170')
+                            this.inputTallDec(170)
                         }}
                         underlayColor="white"  
                         style = {{flex : 1, alignItems : 'center'}}
                         >       
-                            <Text style = {{color : (tempDec == '170' ? 'black' : 'grey'), ...styles.font}}>170</Text>
+                            <Text style = {{color : (tempDec == 170 ? 'black' : 'grey'), ...styles.font}}>170</Text>
                     </TouchableHighlight>
                     <TouchableHighlight
                         onPress={() => {
-                            this.inputTallDec('180')
+                            this.inputTallDec(180)
                         }}
                         underlayColor="white"  
                         style = {{flex : 1, alignItems : 'center'}}
                         >       
-                            <Text style = {{color : (tempDec == '180' ? 'black' : 'grey'), ...styles.font}}>180</Text>
+                            <Text style = {{color : (tempDec == 180 ? 'black' : 'grey'), ...styles.font}}>180</Text>
                     </TouchableHighlight>
                     <TouchableHighlight
                         onPress={() => {
@@ -76,7 +87,7 @@ export default class tall extends React.Component{
                         underlayColor="white"  
                         style = {{flex : 1, alignItems : 'center'}}
                         >       
-                            <Text style = {{color : (tempDec == '190' ? 'black' : 'grey'), ...styles.font}}>190 이상</Text>
+                            <Text style = {{color : (tempDec == 190 ? 'black' : 'grey'), ...styles.font}}>190 이상</Text>
                     </TouchableHighlight>
                 </View>
                 <View style = {{flexDirection : 'row', margin : 10}}>

@@ -3,6 +3,7 @@ import { Text, View, TouchableHighlight, StyleSheet } from "react-native";
 import gender from "../InformNav/gender";
 
 const go = ({navigation}) => {
+    global.refresh = true;
     navigation.navigate(gender);
 }
 

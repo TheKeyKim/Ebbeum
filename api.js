@@ -3,6 +3,6 @@ import React from 'react';
 import {Image} from "react-native";
 
 export const recommend = { 
-    getCody : () => axios.get(
-            "https://kmlre416jb.execute-api.ap-northeast-2.amazonaws.com/firstTest/image?height=1&weight=1&gender=male&size=1&age=1&bodytype=dd")
+    getCody : (num) => axios.get(
+            `https://kmlre416jb.execute-api.ap-northeast-2.amazonaws.com/firstTest/image?height=3&weight=80&gender=male&size=3&age=3&bodyType=dd&clothes_kind=outers&picture_num=${num}`)
 }

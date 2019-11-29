@@ -18,7 +18,7 @@ const TabIcon = styled.Image`
 const TabNavigation = createBottomTabNavigator(
     {
         Home : {
-            screen : createStack(Home, "메인화면"),
+            screen : Home,
             navigationOptions : {
                 tabBarIcon : ({focused}) =>
                 <TabIcon source = 
@@ -30,7 +30,7 @@ const TabNavigation = createBottomTabNavigator(
             }
         },
         Recommend : {
-            screen : createStack(Recommend, "코디추천"),
+            screen : Recommend,
             navigationOptions : {
                 tabBarIcon : ({focused}) =>
                 <TabIcon style = {{width : 120}} source = 

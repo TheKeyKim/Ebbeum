@@ -44,10 +44,20 @@ export default class extends React.Component {
             })
         }
     }
+    static navigationOptions = ({navigation}) => ({
+        title : navigation.getParam("type", "no-type")
+    });
     async componentDidMount(){
+        const { navigation } = this.props;
+        const type = navigation.getParam("type", "no-type");
+
         this.load(10)
     }
     render = () => {
+        const { navigation } = this.props;
+        const type = navigation.getParam("type", "no-type");
+        console.log(type);
+
         if(global.refresh){
             this.forceUpdate();
             global.refresh = false;
