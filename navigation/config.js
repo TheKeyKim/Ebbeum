@@ -17,30 +17,23 @@ export const headerStyles = {
     headerTintColor: TINT_COLOR
 };
 
-export const createStack = (screen, title) => 
+export const createStack = (screen, title, navigation) => 
     createStackNavigator({
         Screen : {
             screen,
             navigationOptions : {
                 title : null,
-                headerBackground : (
-                    <View style = {{flex : 1, flexDirection : 'row'}}>
-                        <View  style = {{flex : 1, justifyContent : "center", paddingTop : 45, paddingLeft : 10}} >
-                            <Image source = {require("../assets/Logo.png")} />
-                        </View>  
-                        <View style = {{flex : 1, justifyContent : "center", alignItems : "flex-end", paddingTop : 20, paddingRight : 10}}>
-                             <TouchableHighlight
-                                onPress={() => {
-                                    alert("개발 중입니다!")
-                                }}
-                                underlayColor="white"
-                            >
-                                <Image source = {require("../assets/Menu_bar.png")} />
-                            </TouchableHighlight>
-                        </View>
-                    </View>
-                ),
                 ...headerStyles
+            }
+        }
+});
+
+export const createMypage= (screen, title) => 
+    createStackNavigator({
+        Screen : {
+            screen,
+            navigationOptions : {
+                title : "마이 페이지"
             }
         }
 });

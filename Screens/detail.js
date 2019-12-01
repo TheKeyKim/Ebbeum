@@ -4,6 +4,7 @@ import Layout from "../constants/Layout";
 import {BG_COLOR} from "../constants/Color";
 import {recommend} from "../api";
 import RcTab from "./rcTab";
+import { AppLoading } from "expo";
 
 const styles = StyleSheet.create({
     container : {
@@ -23,17 +24,29 @@ export default class extends React.Component {
         loaded : false,
         link : []
     }
-    async load(num){
+    async load(type, num){
         let loaded, linkArray, link
         const { info } = this.state;
-        try{
+        try{if(global.Tall != null){
             const {
                 data : {
-                    posterURL : linkArray
+                    clothes
                 }
-            } = await recommend.getCody(num);
-            link = linkArray;
+            }
+             = await recommend.getCody(global.Tall, global.gender,global.SizeUpper, global.SizeDown, global.bodyType, type, num);
+            link = clothes;
             this.setState({link : link});
+            }
+            else{
+                const {
+                    data : {
+                        clothes
+                    }
+                }
+                 = await recommend.getCody(173, 'male', 'L', '31', 'A', type, 10);
+                link = clothes;
+                this.setState({link : link});
+            }
         }catch(error){
             
         }
@@ -50,13 +63,11 @@ export default class extends React.Component {
     async componentDidMount(){
         const { navigation } = this.props;
         const type = navigation.getParam("type", "no-type");
-
-        this.load(10)
+        this.load(type, 10)
     }
     render = () => {
         const { navigation } = this.props;
         const type = navigation.getParam("type", "no-type");
-        console.log(type);
 
         if(global.refresh){
             this.forceUpdate();
@@ -65,13 +76,15 @@ export default class extends React.Component {
         const { loaded, link} = this.state;
         var i = 0;
         return (
-            <ScrollView>
-                {link.map(links => (
-                    <View key = {i++}>
-                        {loaded ?  <RcTab link = {links} />: <Text>loading</Text>}
-                    </View>
-                    )
-                )}
+            <ScrollView style = {{flex :1 , backgroundColor : '#f8f6f6'}}>
+                {link != null ?
+                    (loaded ? (link.filter(links => links != null).map(links => (
+                        <View key = {i++}>
+                            {loaded ?  <RcTab link = {links} />: <Text>loading</Text>}
+                        </View>
+                        )
+                    )) : null) : <Text>null</Text>
+                }
             </ScrollView>
         )
     }

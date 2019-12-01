@@ -9,6 +9,9 @@ import gender from "../InformNav/gender";
 import size from "../InformNav/size";
 import tall from "../InformNav/tall";
 import detail from '../Screens/detail';
+import login from "../Screens/login";
+import signin from "../Screens/signin";
+import bodytype from "../InformNav/bodytype";
 import { BG_COLOR, TINT_COLOR } from "../constants/Color";
 import Layout from "../constants/Layout";
 import { TouchableHighlight } from "react-native-gesture-handler";
@@ -31,24 +34,7 @@ const MainNavigation = createStackNavigator({
         screen : TabNavigation,
         navigationOptions : {
             title : null,
-            headerBackground : (
-                <View style = {{flex : 1, flexDirection : 'row'}}>
-                    <View  style = {{flex : 1, justifyContent : "center", paddingTop : 45, paddingLeft : 10}} >
-                        <Image source = {require("../assets/Logo.png")} />
-                    </View>  
-                    <View style = {{flex : 1, justifyContent : "center", alignItems : "flex-end", paddingTop : 20, paddingRight : 10}}>
-                         <TouchableHighlight
-                            onPress={() => {
-                                alert("개발 중입니다!")
-                            }}
-                            underlayColor="white"
-                        >
-                            <Image source = {require("../assets/Menu_bar.png")} />
-                        </TouchableHighlight>
-                    </View>
-                </View>
-            ),
-            ...headerStyles
+            header : null
         }
     },
     gender : {
@@ -75,6 +61,22 @@ const MainNavigation = createStackNavigator({
             header : null
         }
     },
+    bodytype : {
+        screen : bodytype,
+        navigationOptions : {
+            header : null
+        }
+    },
+    login : {
+        screen : login,
+        navigationOptions : {
+        }
+    },
+    signin : {
+        screen : signin,
+        navigationOptions : {
+        }
+    },
     confirm : {
         screen : confirm,
         navigationOptions : {
@@ -83,8 +85,8 @@ const MainNavigation = createStackNavigator({
     },
     detail : {
         screen : detail
-    }
-
+    },
+    
 })
 
 export default createAppContainer(MainNavigation);

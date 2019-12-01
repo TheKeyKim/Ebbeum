@@ -2,12 +2,13 @@ import React from "react";
 import { Platform, Image } from "react-native"
 import { createBottomTabNavigator } from "react-navigation-tabs";
 import { createAppContainer } from 'react-navigation';
-import { createStack } from "./config";
+import { createStack, createMypage } from "./config";
 import Home from "../Screens/Home";
 import Mypage from "../Screens/Mypage";
 import Recommend from "../Screens/Recommend";
-import BG_COLOR, { ACTIVE_COLOR, INACTIVE_COLOR } from "../constants/Color";
+import {BG_COLOR, TINT_COLOR}from "../constants/Color";
 import styled from "styled-components";
+import Layout from "../constants/Layout";
 
 const TabIcon = styled.Image`
     flex : 1;
@@ -15,10 +16,24 @@ const TabIcon = styled.Image`
     height : 20px;
 `;
 
+
+export const headerStyles = {
+    headerStyle : {
+        height : Layout.height*0.07,
+        backgroundColor : BG_COLOR,
+        borderBottomWidth : 0.1,
+    },
+    headerTitleStyle : {
+        color : TINT_COLOR
+    },
+    headerTintColor: TINT_COLOR
+};
+
+
 const TabNavigation = createBottomTabNavigator(
     {
         Home : {
-            screen : Home,
+            screen : createStack(Home, "home", ),
             navigationOptions : {
                 tabBarIcon : ({focused}) =>
                 <TabIcon source = 
@@ -30,7 +45,7 @@ const TabNavigation = createBottomTabNavigator(
             }
         },
         Recommend : {
-            screen : Recommend,
+            screen : createStack(Recommend, "추천"),
             navigationOptions : {
                 tabBarIcon : ({focused}) =>
                 <TabIcon style = {{width : 120}} source = 
@@ -42,7 +57,7 @@ const TabNavigation = createBottomTabNavigator(
             }
         },
         Mypage : {
-            screen : Mypage,
+            screen : createMypage(Mypage, "마이 페이지"),
             navigationOptions : {
                 tabBarIcon : ({focused}) =>
                 <TabIcon style = {{width : 70, height :20}} source = 
@@ -65,3 +80,4 @@ const TabNavigation = createBottomTabNavigator(
 )
 
 export default createAppContainer(TabNavigation);
+

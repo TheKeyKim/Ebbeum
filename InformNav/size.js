@@ -33,7 +33,7 @@ export default class size extends React.Component{
         else {
             global.SizeUpper = tempUpper;
             global.SizeDown = tempDown;
-            navigation.replace('confirm');
+            navigation.replace('bodytype');
         }
     }
     render(){

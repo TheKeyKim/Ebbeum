@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, StatusBar } from 'react-native';
 import Loading from "./Loading"
 import MainNavigation from "./navigation/MainNavigation"
 
@@ -15,7 +15,16 @@ export default class App extends React.Component {
   }
   render(){
     const { loading, first } = this.state;
-    return (loading? <Loading /> : <MainNavigation />);
+    return (loading? (
+      <>
+      <Loading />
+      </>
+      ) :
+      ( 
+      <>
+      <MainNavigation />
+      </>
+    ));
   }
 }
 

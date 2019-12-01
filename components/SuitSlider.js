@@ -42,22 +42,46 @@ const SuitSlider = ({navigation}) => (
                 </TouchableHighlight>
                 </View>
                 <View style = {{flex : 1, width : 80}}>
-                    <View style = {{alignItems : "center"}}>
-                        <EventImage source = {require("../assets/suit_outer.png")} />  
-                        <Text>아우터</Text>
-                    </View>
+                    <TouchableHighlight
+                    onPress={() => {
+                        global.type = "up";
+                        navigation.navigate("detail", {type : 'outers'});
+                    }}
+                    underlayColor="white"  
+                    > 
+                        <View style = {{alignItems : "center"}}>
+                            <EventImage source = {require("../assets/suit_outer.png")} />  
+                            <Text>아우터</Text>
+                        </View>
+                    </TouchableHighlight>
                 </View>
                 <View style = {{flex : 1, width : 80}}>
-                    <View style = {{alignItems : "center"}}>
-                        <EventImage source = {require("../assets/suit_pants.png")} />  
-                        <Text>바지</Text>
-                    </View>
+                    <TouchableHighlight
+                    onPress={() => {
+                        global.type = "up";
+                        navigation.navigate("detail", {type : 'bottoms'});
+                    }}
+                    underlayColor="white"  
+                    > 
+                        <View style = {{alignItems : "center"}}>
+                            <EventImage source = {require("../assets/suit_pants.png")} />  
+                            <Text>바지</Text>
+                        </View>
+                    </TouchableHighlight>
                 </View>
                 <View style = {{flex : 1, width : 80}}>
-                    <View style = {{alignItems : "center"}}>
-                        <EventImage source = {require("../assets/suit_shoes.png")} />  
-                        <Text>신발</Text>
-                    </View>
+                    <TouchableHighlight
+                        onPress={() => {
+                            global.type = "up";
+                            navigation.navigate("detail", {type : 'shoes'});
+                        }}
+                        underlayColor="white"  
+                        > 
+                        <View style = {{alignItems : "center"}}>
+                            <EventImage source = {require("../assets/suit_shoes.png")} />  
+                            <Text>신발</Text>
+                        </View>
+                    </TouchableHighlight>
                 </View>
                 <View style = {{flex : 1, width : 80}}>
                     <View style = {{alignItems : "center"}}>

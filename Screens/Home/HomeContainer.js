@@ -1,5 +1,5 @@
 import React from "react";
-import { ScrollView ,View, Text, StyleSheet } from "react-native";
+import { ScrollView ,View, Text, StyleSheet, Button, Image, TouchableHighlight } from "react-native";
 import HomePresenter from "./HomePresenter";
 import Layout from "../../constants/Layout";
 import SuitSlider from "../../components/SuitSlider";
@@ -25,6 +25,27 @@ export default class HomeContainer extends React.Component{
         best : null,
         error : null
     }
+    
+    static navigationOptions = ({navigation}) => {
+        return {
+            headerBackground : () => (
+            <View style = {{flex : 1, flexDirection : 'row'}}>
+                <View  style = {{flex : 1, justifyContent : "center", paddingTop : 45, paddingLeft : 10}} >
+                    <Image source = {require("../../assets/Logo.png")} />
+                </View>  
+                <View style = {{flex : 1, justifyContent : "center", alignItems : "flex-end", paddingTop : 20, paddingRight : 10}}>
+                    <TouchableHighlight
+                        onPress={() => {
+                            navigation.navigate("login");
+                        }}
+                        underlayColor="white"
+                    >
+                        <Image source = {require("../../assets/Menu_bar.png")} />
+                    </TouchableHighlight>
+                </View>
+            </View>)
+        }
+    }
     async componentDidMount(){
         let main, recommend, best,error;
         try{// api 처리 부분.
@@ -49,6 +70,7 @@ export default class HomeContainer extends React.Component{
         const { loading, main, recommend, best } = this.state;
         const { navigation } = this.props;
         return (
+            <>
             <ScrollView style = {{flex :1 , backgroundColor : '#f8f6f6'}}>               
                 <View style = {{paddingTop : 5, backgroundColor : BG_COLOR}}>
                   <SuitSlider navigation = {navigation}/>
@@ -66,6 +88,7 @@ export default class HomeContainer extends React.Component{
                     <Text>패션 소식</Text>
                 </View>
             </ScrollView>
+            </>
         );
     }
 }

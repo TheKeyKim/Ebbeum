@@ -13,18 +13,40 @@ const styles = StyleSheet.create({
         width : Layout.width*0.98,
         marginTop : 5,
         marginLeft : 5,
-        paddingTop : 2
+        paddingTop : 2,
+        flexDirection : 'row'
         }
     }
 );
 
-const RcTab = ({link}) =>  (
-    <ScrollView style = {{flex :1 , backgroundColor : '#f8f6f6'}}>      
+const Color = (i) => {
+    if(i==1){
+        return '밝음계열'
+    }
+    else if(i==2){
+        return '원색계열'
+    }
+    else{
+        return '어두운계열'
+    }
+}
+const RcTab = ({link}) =>  (  
         <View style = {styles.container}>
             <Image style = {{height : Layout.height/5.2, width : Layout.width*0.3}} 
-                            source = {{uri: link }} />
+                            source = {{uri: link.posterURL }} />
+            <View style = {{flexDirection : 'column', width : Layout.width*0.58, marginLeft : 20, marginTop : 5}}>
+                <View style = {{flex : 0.25}}>
+                    <Text style = {{fontSize : 15}}>
+                        {link.name}
+                    </Text>
+                </View>
+                <View style = {{flex:0.75}}>
+                    <Text>
+                        #{Color(link.color)} #{link.category} #{link.style}
+                    </Text>
+                </View>
+            </View>
         </View>
-    </ScrollView>
 )
 
 
