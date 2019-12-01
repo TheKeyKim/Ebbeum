@@ -36,7 +36,12 @@ export default class HomeContainer extends React.Component{
                 <View style = {{flex : 1, justifyContent : "center", alignItems : "flex-end", paddingTop : 20, paddingRight : 10}}>
                     <TouchableHighlight
                         onPress={() => {
-                            navigation.navigate("login");
+                            if(global.ID == null){
+                                navigation.navigate("login");
+                            }
+                            else{
+                                navigation.navigate("logout");
+                            }
                         }}
                         underlayColor="white"
                     >
@@ -47,8 +52,9 @@ export default class HomeContainer extends React.Component{
         }
     }
     async componentDidMount(){
+        console.log(global.ID);
         let main, recommend, best,error;
-        try{// api 처리 부분.
+        try{// api 처리 부분. id정보를 받아와서 global값에 저장해줌.
            /* this.setState({
                 upcoming,
                 popular,

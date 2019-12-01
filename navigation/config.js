@@ -33,7 +33,8 @@ export const createMypage= (screen, title) =>
         Screen : {
             screen,
             navigationOptions : {
-                title : "마이 페이지"
+                title : null,
+                header : null
             }
         }
 });

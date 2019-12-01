@@ -1,14 +1,13 @@
 import React from "react";
 import {View, Text, StyleSheet, TextInput, TouchableHighlight, Image} from "react-native";
-import axios from "axios";
 import Layout from "../constants/Layout"
 import {recommend} from "../api";
 
 import { NavigationActions, StackActions } from 'react-navigation';
 
-styles = StyleSheet.create({
+styless = StyleSheet.create({
     container : {
-        height : 120,
+        height : 80,
         paddingTop : 8,
         width : Layout.width*0.9,
         alignItems : 'flex-start',
@@ -19,18 +18,30 @@ styles = StyleSheet.create({
     input : {
         height : 58,
         width: Layout.width*0.9,
-        borderColor : '#c7c7c7',
         borderWidth : 2,
+        borderColor : '#c7c7c7',
         justifyContent : 'center',
         paddingLeft : 10
     },
-    tag : {
-        paddingBottom : 10,
+    login : {
+        height : 58,
+        width: Layout.width*0.9,
+        backgroundColor : 'black',
+        alignItems : 'center',
+        justifyContent : 'center'
+    },
+    signin : {
+        height : 80,
+        paddingTop : 8,
         width : Layout.width*0.9,
-        alignItems : 'flex-start'
+        borderTopColor : '#c7c7c7',
+        borderTopWidth : 1,
+        justifyContent : 'flex-start',
+        alignItems : 'flex-end',
+        padding : 13,
+        marginTop : 10
     }
 })
-
 
 export default class a extends React.Component{
     state = {
@@ -47,49 +58,46 @@ export default class a extends React.Component{
         const {navigation} = this.props;
         const { id, pw} = this.state;
         const data = await recommend.LogIN(id,pw);
-        console.log(data);
-        navigation.dispatch(
-            StackActions.reset(
-            {
-                index :0,
-                actions : [
-                    NavigationActions.navigate({routeName : 'Tabs'})
-                ]
-            }
-        ));
+        if(data.data.exitCode == "200"){
+            global.ID = id;
+            navigation.dispatch(
+                StackActions.reset(
+                {
+                    index :0,
+                    actions : [
+                        NavigationActions.navigate({routeName : 'Tabs'})
+                    ]
+                }
+            ));
+        }
+        else{
+            alert("존재하지 않는 계정입니다!")
+        }
     }
     render(){
         const {navigation} = this.props;
         return (
-            <View style ={{flex : 1, alignItems : 'center', justifyContent : 'center'}}>
-                <View style = {styles.container}>
-                    <View style = {styles.tag}>
-                        <Text style = {{fontSize : 16}}>
-                        아이디
-                        </Text>
-                    </View>
-                    <View>
-                        <View 
-                            style = {styles.input}
-                            >
-                            <TextInput
-                            style = {{width : Layout.width*0.7}}
-                            onChangeText = {this.handleID}
-                            placeholder = "ID"
-                            textContentType = "username"
-                            autoCapitalize = 'none'
-                            />
-                        </View>
+            <View style ={{flex : 1, alignItems : 'center'}}>
+                <View>
+                    <Image style ={{width : 110, resizeMode:'contain', marginTop : 50}} source = {require("../assets/logoA.png")} />
+                </View>
+                <View style = {styless.container}>
+                    <View 
+                        style = {styless.input}
+                        >
+                        <TextInput
+                        style = {{width : Layout.width*0.7}}
+                        onChangeText = {this.handleID}
+                        placeholder = "아이디"
+                        textContentType = "username"
+                        autoCapitalize = 'none'
+                        />
                     </View>
                 </View>
-                <View style = {styles.container}>
-                    <View style = {styles.tag}>
-                        <Text style = {{fontSize : 16}}>
-                        비밀번호
-                        </Text>
-                    </View>
-                    <View style = {styles.input}>
+                <View style = {styless.container}>
+                    <View style = {styless.input}>
                         <TextInput
+                            style = {{width : Layout.width*0.7}}
                             placeholder = "비밀번호"
                             secureTextEntry = {true}
                             autoCapitalize = 'none'
@@ -98,24 +106,24 @@ export default class a extends React.Component{
                         </TextInput>
                     </View>
                 </View>
-                <View>
                     <TouchableHighlight
                         onPress={() => {
                             this.confirm();
                         }}
                         underlayColor="white"
-                    >
-                        <Image source = {require("../assets/Menu_bar.png")} />
+                    ><View style = {styless.login}>
+                        <Text style = {{fontSize : 16, color : 'white'}}>로그인</Text>
+                        </View>
                     </TouchableHighlight>
-                </View>
-                <View>
+               
+                <View style = {styless.signin}>
                     <TouchableHighlight
                         onPress={() => {
                             navigation.navigate("signin");
                         }}
                         underlayColor="white"
                     >
-                        <Text>
+                        <Text style = {{color : '#c7c7c7'}}>
                             회원가입
                         </Text>
                     </TouchableHighlight>

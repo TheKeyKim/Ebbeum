@@ -10,8 +10,10 @@ import size from "../InformNav/size";
 import tall from "../InformNav/tall";
 import detail from '../Screens/detail';
 import login from "../Screens/login";
+import logout from "../Screens/logout";
 import signin from "../Screens/signin";
 import bodytype from "../InformNav/bodytype";
+import Rewrite from "../Screens/Mypage/Rewrite";
 import { BG_COLOR, TINT_COLOR } from "../constants/Color";
 import Layout from "../constants/Layout";
 import { TouchableHighlight } from "react-native-gesture-handler";
@@ -70,11 +72,20 @@ const MainNavigation = createStackNavigator({
     login : {
         screen : login,
         navigationOptions : {
+            headerTransparent : true
+        }
+    },
+    logout : {
+        screen : logout,
+        navigationOptions : {
+            headerTransparent : true
         }
     },
     signin : {
         screen : signin,
         navigationOptions : {
+            headerTransparent : true,
+            title : "회원가입"
         }
     },
     confirm : {
@@ -86,7 +97,13 @@ const MainNavigation = createStackNavigator({
     detail : {
         screen : detail
     },
-    
+    Rewrite : {
+        screen : Rewrite,
+        navigationOptions : {
+            headerTransparent : true,
+            headerTintColor: 'white'
+        }
+    }
 })
 
 export default createAppContainer(MainNavigation);

@@ -27,7 +27,14 @@ styles = StyleSheet.create({
         paddingBottom : 10,
         width : Layout.width*0.9,
         alignItems : 'flex-start'
-    }
+    },
+    signin : {
+        height : 58,
+        width: Layout.width*0.9,
+        backgroundColor : 'black',
+        alignItems : 'center',
+        justifyContent : 'center'
+    },
 })
 
 color = (code) => {
@@ -134,7 +141,7 @@ export default class a extends React.Component{
         pwColor = color(pwc);
         nameColor = color(namec);
         return (
-            <View style ={{flex : 1, alignItems : 'center', justifyContent : 'center'}}>
+            <View style ={{flex : 1, alignItems : 'center', paddingTop : 80}}>
                 <View style = {styles.container}>
                     <View style = {styles.tag}>
                         <Text style = {{fontSize : 16}}>
@@ -192,14 +199,16 @@ export default class a extends React.Component{
                             />
                     </View>
                 </View>
-                <View>
+                <View style = {styles.signin}>
                     <TouchableHighlight
                         onPress={() => {
                             this.confirm();
                         }}
                         underlayColor="white"
                     >
-                        <Image source = {require("../assets/Menu_bar.png")} />
+                        <Text style = {{fontSize : 16, color : 'white'}}>
+                            회원가입
+                        </Text>
                     </TouchableHighlight>
                 </View>
             </View>
