@@ -37,20 +37,7 @@ styles = StyleSheet.create({
     },
 })
 
-color = (code) => {
-    if(code == 1){
-        return '#c7c7c7';
-    }
-    else if(code == 2){
-        return 'red'
-    }
-    else if(code == 3){
-        return 'green'
-    }
-    else{
-        return 'black' 
-    }
-}
+
 
 export default class a extends React.Component{
     state = {
@@ -63,6 +50,20 @@ export default class a extends React.Component{
         pwc : "1",
         namec : "1"
     };
+    color = (code) => {
+        if(code == 1){
+            return '#c7c7c7';
+        }
+        else if(code == 2){
+            return 'red'
+        }
+        else if(code == 3){
+            return 'green'
+        }
+        else{
+            return 'black' 
+        }
+    }
     handleID = (text) => {
         this.setState({id : text, legal : false});
         if(text.length >= 3 && text.length <= 10){
@@ -75,7 +76,6 @@ export default class a extends React.Component{
     async duplicateCheck(){
         const { id, idCheck} = this.state;
         const result = await recommend.checkID(id);
-        console.log(result.data.isDuplicate)
         if(!result.data.isDuplicate && idCheck){
             this.setState({
                 legal : true,
@@ -137,9 +137,9 @@ export default class a extends React.Component{
     render(){
         var text;
         const {idCheck, legal, idc, pwc, namec} = this.state;
-        idColor = color(idc);
-        pwColor = color(pwc);
-        nameColor = color(namec);
+        idColor = this.color(idc);
+        pwColor = this.color(pwc);
+        nameColor = this.color(namec);
         return (
             <View style ={{flex : 1, alignItems : 'center', paddingTop : 80}}>
                 <View style = {styles.container}>
@@ -158,7 +158,7 @@ export default class a extends React.Component{
                             placeholder = "ID"
                             textContentType = "username"
                             autoCapitalize = 'none'
-                            onEndEditing ={() => this.duplicateCheck()}
+                            onEndEditing  = {() => this.duplicateCheck()}
                             />
                         </View>
                         {idc == 2 && !legal ?

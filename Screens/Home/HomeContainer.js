@@ -1,7 +1,8 @@
 import React from "react";
-import { ScrollView ,View, Text, StyleSheet, Button, Image, TouchableHighlight } from "react-native";
+import { ScrollView ,View, Text, StyleSheet, Button, Image, TouchableHighlight, ActivityIndicator } from "react-native";
 import HomePresenter from "./HomePresenter";
 import Layout from "../../constants/Layout";
+import{ recommend} from "../../api"
 import SuitSlider from "../../components/SuitSlider";
 import { BG_COLOR } from "../../constants/Color";
 
@@ -9,10 +10,11 @@ const styles = StyleSheet.create({
         container : {
         flex : 1,
         backgroundColor : BG_COLOR,
-        height : Layout.height/5,
+        height : Layout.height/4,
         marginTop : 5,
         marginLeft : 5,
-        paddingTop : 2
+        paddingTop : 2,
+        paddingRight : 5
         }
     }
 )
@@ -23,7 +25,8 @@ export default class HomeContainer extends React.Component{
         main : null,
         recommend : null,
         best : null,
-        error : null
+        error : null,
+        link : null
     }
     
     static navigationOptions = ({navigation}) => {
@@ -52,28 +55,28 @@ export default class HomeContainer extends React.Component{
         }
     }
     async componentDidMount(){
-        console.log(global.ID);
-        let main, recommend, best,error;
-        try{// api 처리 부분. id정보를 받아와서 global값에 저장해줌.
-           /* this.setState({
-                upcoming,
-                popular,
-                nowPlaying
-            })*/
+        let main, recommand, link,bestSelling;
+        try{const {
+                data : {
+                    recommand
+                }
+            } = await recommend.entireCody();
+                link = recommand;
+            const {
+                data : {
+                    bestSelling
+                } 
+            } = await recommend.getBest(170, 'male', 'L', 31, 'A');
+            //best = bestSelling;
+            this.setState({link : recommand, best : bestSelling})
         }catch(error){
             error = "no api"
         }finally{
-            this.setState({
-                loading:false, 
-                error, 
-                main,
-                recommend,
-                best
-            });
+            this.setState({link, loading : false});
         }
     }
     render(){
-        const { loading, main, recommend, best } = this.state;
+        const { loading, main, link, best } = this.state;
         const { navigation } = this.props;
         return (
             <>
@@ -82,13 +85,49 @@ export default class HomeContainer extends React.Component{
                   <SuitSlider navigation = {navigation}/>
                 </View>
                 <HomePresenter
-                loading = {loading}
+                loading = {false}
                 main =  {main}/>
                 <View style = {styles.container}>
-                    <Text>나만의 스타일리스트</Text>
+                    <View style ={{flex : 0.15}}>
+                        <Text>나만의 스타일리스트</Text>
+                    </View>
+                    <View  style ={{flex : 0.85}}>
+                        {!loading && link[0] != null? 
+                            <View style = {{flexDirection : 'row', justifyContent : 'center'}}>
+                                <Image
+                                    style = {{height : Layout.height/5.2, width : Layout.width*0.20, flex : 1, marginRight : 5}} 
+                                    source = {{uri: link[0].posterURL }} /> 
+                                <Image
+                                    style = {{height : Layout.height/5.2, width : Layout.width*0.20, flex : 1, marginRight : 5}} 
+                                    source = {{uri: link[1].posterURL }} /> 
+                                <Image
+                                    style = {{height : Layout.height/5.2, width : Layout.width*0.20, flex : 1}} 
+                                    source = {{uri: link[2].posterURL }} /> 
+                            </View>
+                                
+                                : <ActivityIndicator size="large" color="black" />}
+                    </View>
                 </View>
                 <View style = {styles.container}>
-                    <Text>베스트 상품</Text>
+                <View style ={{flex : 0.15}}>
+                        <Text>베스트 상품</Text>
+                    </View>
+                    <View  style ={{flex : 0.85}}>
+                        {!loading && best[0] != null? 
+                            <View style = {{flexDirection : 'row', justifyContent : 'center'}}>
+                                <Image
+                                    style = {{height : Layout.height/5.2, width : Layout.width*0.20, flex : 1, marginRight : 5}} 
+                                    source = {{uri: best[0].posterURL }} /> 
+                                <Image
+                                    style = {{height : Layout.height/5.2, width : Layout.width*0.20, flex : 1, marginRight : 5}} 
+                                    source = {{uri: best[1].posterURL }} /> 
+                                <Image
+                                    style = {{height : Layout.height/5.2, width : Layout.width*0.20, flex : 1}} 
+                                    source = {{uri: best[2].posterURL }} /> 
+                            </View>
+                                
+                                : <ActivityIndicator size="large" color="black" /> }
+                    </View>
                 </View>
                 <View style = {styles.container}>
                     <Text>패션 소식</Text>

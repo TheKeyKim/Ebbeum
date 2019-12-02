@@ -4,6 +4,7 @@ import gender from "../../InformNav/gender";
 import Layout from "../../constants/Layout";
 import styled from "styled-components";
 import { NavigationActions, StackActions } from 'react-navigation';
+import { recommend } from "../../api";
 
 
 const Container = styled.View`
@@ -50,7 +51,17 @@ export default class mypage extends React.Component{
             navigation.navigate('login');
         }
         else{
-            global.ID = null;
+            global.ID           = null;
+            global.Tall         = null;
+            global.gender       = null;
+            global.SizeUpper    = null;
+            global.SizeDown     = null;
+            global.Age          = null;
+            global.bodyType     = null;
+            global.RAge         = null;
+            global.TallDec      = null;
+            global.TallDigit    = null;
+            global.Period       = null;
             navigation.dispatch(
                 StackActions.reset(
                 {
@@ -64,19 +75,24 @@ export default class mypage extends React.Component{
     }
     Logout = () => {
         const { navigation } = this.props;
-            navigation.dispatch(
-                StackActions.reset(
-                {
-                    index :0,
-                    actions : [
-                        NavigationActions.navigate({routeName : 'gender'})
-                  ]
-                }
-       ));
+        navigation.navigate('gender')
     }
     goDetail = () => {
         const {navigation} = this.props;
         navigation.navigate('Rewrite');
+    }
+    componentDidMount = async() =>{
+        const { data } = await recommend.userInfo(global.ID);
+
+        if(global.ID != null && false){
+            global.ID           ;
+            global.Tall         ;
+            global.gender       ;
+            global.SizeUpper    ;
+            global.SizeDown     ;
+            global.Age          ;
+            global.bodyType     ;
+        }
     }
     render(){
         const { navigation } = this.props;
@@ -91,7 +107,7 @@ export default class mypage extends React.Component{
                             {global.ID == null ? <Text>익명의 인물</Text> : <Text>{global.ID}</Text>}
                         </Text>
                         <Text style = {{flex : 1, color : 'white'}} >
-                            {global.gender != null ? <Text>{global.Age} {global.Period} {global.gender=='male' ? '남자' : '여자'}</Text> : <Text>아직 체형을 설정하지 않았습니다.</Text>}
+                            {global.gender != null ? <Text>{global.RAge}대 {global.Period} {global.gender=='male' ? '남자' : '여자'}</Text> : <Text>아직 체형을 설정하지 않았습니다.</Text>}
                         </Text>
                     </View>
                 </View>
@@ -106,7 +122,7 @@ export default class mypage extends React.Component{
                         >    
                         <Container>
                             <Content style = {{flexDirection : 'row'}}>
-                               <Image style = {{height : 30, width : 30, resizeMode:'contain'}} source ={require("../../assets/logout1.png")} /> 
+                               <Image style = {{height : 30, width : 30, resizeMode:'contain'}} source ={require("../../assets/logout3.png")} /> 
                                 <View style = {{marginLeft : 20}}>
                                     <Text style = {{flex : 1, fontSize : 20, paddingTop : 20}}>
                                         <Text>체형정보</Text>
@@ -126,7 +142,7 @@ export default class mypage extends React.Component{
                         >    
                         <Container>
                             <Content style = {{flexDirection : 'row'}}>
-                               <Image style = {{height : 30, width : 30, resizeMode:'contain'}} source ={require("../../assets/logout1.png")} /> 
+                               <Image style = {{height : 30, width : 30, resizeMode:'contain'}} source ={require("../../assets/logout2.png")} /> 
                                 <View style = {{marginLeft : 20}}>
                                     <Text style = {{flex : 1, fontSize : 20, paddingTop : 20}}>
                                         <Text>체형재설정</Text>

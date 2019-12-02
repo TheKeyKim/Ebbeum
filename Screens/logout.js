@@ -7,7 +7,18 @@ import { NavigationActions, StackActions } from 'react-navigation';
 export default class a extends React.Component{
     async confirm(){
         const {navigation}  = this.props;
-        global.ID = null;
+        global.ID           = null;
+        global.Tall         = null;
+        global.gender       = null;
+        global.SizeUpper    = null;
+        global.SizeDown     = null;
+        global.Age          = null;
+        global.bodyType     = null;
+        global.RAge         = null;
+        global.TallDec      = null;
+        global.TallDigit    = null;
+        global.Period       = null;
+        
         navigation.dispatch(
             StackActions.reset(
             {

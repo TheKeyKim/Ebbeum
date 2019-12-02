@@ -3,7 +3,7 @@ import { Text, ScrollView, View, StyleSheet, Image, TouchableHighlight } from "r
 import Layout from "../constants/Layout";
 import {BG_COLOR} from "../constants/Color";
 import {recommend} from "../api";
-import RcTab from "./rcTab";
+import {RccTab} from "./rcTab";
 
 const styles = StyleSheet.create({
     container : {
@@ -44,28 +44,28 @@ export default class extends React.Component {
         }
     }
     async load(type, num){
-        let loaded, linkArray, link
+        let loaded, linkArray, recommand
         const { info } = this.state;
         try{
             if(global.Tall != null){
             const {
                 data : {
-                    clothes
+                    recommand
                 }
             }
-             = await recommend.getCody(global.Tall, global.gender,global.SizeUpper, global.SizeDown, global.bodyType, type, num);
-            link = clothes;
-            this.setState({link : link});
+             = await recommend.entireCody();
+            link = recommand;
+            this.setState({link : recommand});
             }
             else{
                 const {
                     data : {
-                        clothes
+                        recommand
                     }
                 }
-                 = await recommend.getCody(173, 'male', 'L', '31', 'A', 'bottoms', 10);
-                link = clothes;
-                this.setState({link : link});
+                 = await recommend.entireCody();
+                link = recommand;
+                this.setState({link : recommand});
             }
         }catch(error){
             
@@ -90,14 +90,16 @@ export default class extends React.Component {
         var i = 0;
         return (
             <ScrollView  style = {{flex :1 , backgroundColor : '#f8f6f6'}}>
+                <View style = {{flexDirection : 'row', flexWrap : 'wrap'}}>
                 {link != null ?
                     (loaded ? (link.filter(links => links != null).map(links => (
                         <View key = {i++}>
-                            {loaded ?  <RcTab link = {links} />: <Text>loading</Text>}
+                            {loaded ?  <RccTab link = {links} />: <Text>loading</Text>}
                         </View>
                         )
                     )) : null) : <Text>null</Text>
                 }
+                </View>
             </ScrollView>
         )
     }

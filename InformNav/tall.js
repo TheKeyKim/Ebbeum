@@ -43,7 +43,7 @@ export default class tall extends React.Component{
             else if(tempDigit == "후반"){
                 digit = 8;
             }
-            global.Tall = tempDec + digit;
+            global.Tall = parseInt(tempDec) + digit;
             navigation.replace('size');
         }
     }

@@ -32,8 +32,20 @@ export default class age extends React.Component{
             alert("빈칸이 있어요!!");
         }
         else {
-            global.Age = tempAge;
+            global.RAge = tempAge;
             global.Period = tempPeriod;
+            var digit = 0;
+            if(tempPeriod == "초반"){
+                digit = 0;
+            }
+            else if(tempPeriod == "중반"){
+                digit = 5;
+            }
+            else if(tempPeriod == "후반"){
+                digit = 8;
+            }
+            global.Age = parseInt(tempAge) + digit;
+            console.log(global.Age);
             navigation.replace('tall');
         }
     }
@@ -45,48 +57,48 @@ export default class age extends React.Component{
                 <View style = {{flexDirection : 'row', marginTop : 50}}>
                     <TouchableHighlight
                         onPress={() => {
-                            this.inputAge('10대')
+                            this.inputAge('10')
                         }}
                         underlayColor="white"  
                         style = {{flex : 1, alignItems : 'center'}}
                         >       
-                            <Text style = {{color : (tempAge == '10대' ? 'black' : 'grey'), ...styles.font}}>10대</Text>
+                            <Text style = {{color : (tempAge == '10' ? 'black' : 'grey'), ...styles.font}}>10대</Text>
                     </TouchableHighlight>
                     <TouchableHighlight
                         onPress={() => {
-                            this.inputAge('20대')
+                            this.inputAge('20')
                         }}
                         underlayColor="white"  
                         style = {{flex : 1, alignItems : 'center'}}
                         >       
-                            <Text style = {{color : (tempAge == '20대' ? 'black' : 'grey'), ...styles.font}}>20대</Text>
+                            <Text style = {{color : (tempAge == '20' ? 'black' : 'grey'), ...styles.font}}>20대</Text>
                     </TouchableHighlight>
                     <TouchableHighlight
                         onPress={() => {
-                            this.inputAge('30대')
+                            this.inputAge('30')
                         }}
                         underlayColor="white"  
                         style = {{flex : 1, alignItems : 'center'}}
                         >       
-                            <Text style = {{color : (tempAge == '30대' ? 'black' : 'grey'), ...styles.font}}>30대</Text>
+                            <Text style = {{color : (tempAge == '30' ? 'black' : 'grey'), ...styles.font}}>30대</Text>
                     </TouchableHighlight>
                     <TouchableHighlight
                         onPress={() => {
-                            this.inputAge('40대')
+                            this.inputAge('40')
                         }}
                         underlayColor="white"  
                         style = {{flex : 1, alignItems : 'center'}}
                         >       
-                            <Text style = {{color : (tempAge == '40대' ? 'black' : 'grey'), ...styles.font}}>40대</Text>
+                            <Text style = {{color : (tempAge == '40' ? 'black' : 'grey'), ...styles.font}}>40대</Text>
                     </TouchableHighlight>
                     <TouchableHighlight
                         onPress={() => {
-                            this.inputAge('50대')
+                            this.inputAge('50')
                         }}
                         underlayColor="white"  
                         style = {{flex : 1, alignItems : 'center'}}
                         >       
-                            <Text style = {{color : (tempAge == '50대' ? 'black' : 'grey'), ...styles.font}}>50대</Text>
+                            <Text style = {{color : (tempAge == '50' ? 'black' : 'grey'), ...styles.font}}>50대</Text>
                     </TouchableHighlight>
                 </View>
                 <View style = {{flexDirection : 'row', margin : 10}}>

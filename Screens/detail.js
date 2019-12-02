@@ -27,7 +27,7 @@ export default class extends React.Component {
     async load(type, num){
         let loaded, linkArray, link
         const { info } = this.state;
-        try{if(global.Tall != null){
+        try{if(global.Tall != null && global.Tall != 0){
             const {
                 data : {
                     clothes

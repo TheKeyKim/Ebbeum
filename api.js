@@ -11,5 +11,14 @@ export const recommend = {
     ),
     LogIN: (ID,pw) => axios.get(
         `https://hk4llx6x5j.execute-api.ap-northeast-2.amazonaws.com/first/account-data?id=${ID}&pw=${pw}`
+    ),
+    entireCody : () => axios.get(
+        `https://kmlre416jb.execute-api.ap-northeast-2.amazonaws.com/alpha/entire-recommand`
+    ),
+    userInfo : (ID) => axios.get(
+        `https://hk4llx6x5j.execute-api.ap-northeast-2.amazonaws.com/first/userinfo?id=${ID}`
+    ),
+    getBest : (tall,  gender,top, bot, bodyType) => axios.get(
+        `https://kmlre416jb.execute-api.ap-northeast-2.amazonaws.com/alpha/best-selling?height=${tall}&gender=${gender}&topSize=${top}&pantsSize=${bot}&age=30&bodyType=${bodyType}`
     )
 }

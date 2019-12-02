@@ -15,6 +15,17 @@ const styles = StyleSheet.create({
         marginLeft : 5,
         paddingTop : 2,
         flexDirection : 'row'
+        },  
+    container2 : {
+        flex : 1,
+        backgroundColor : BG_COLOR,
+        height : Layout.height/3.1,
+        width : Layout.width*0.48,
+        marginTop : 5,
+        marginLeft : 5,
+        paddingTop : 8,
+        flexDirection : 'column',
+        alignItems : 'center'
         }
     }
 );
@@ -37,7 +48,7 @@ const RcTab = ({link}) =>  (
             <View style = {{flexDirection : 'column', width : Layout.width*0.58, marginLeft : 20, marginTop : 5}}>
                 <View style = {{flex : 0.25}}>
                     <Text style = {{fontSize : 15}}>
-                        {link.name}
+                        {link.name.length > 30 ? link.name.substring(0,30)+'...' : link.name}
                     </Text>
                 </View>
                 <View style = {{flex:0.75}}>
@@ -49,6 +60,23 @@ const RcTab = ({link}) =>  (
         </View>
 )
 
+export const RccTab = ({link}) =>  (  
+    <View style = {styles.container2}>
+        <Image style = {{height : Layout.height/4, width : Layout.width*0.43}} 
+                        source = {{uri: link.posterURL }} />
+        <View style = {{flexDirection : 'column', width : Layout.width*0.43, alignItems : 'center' , marginTop : 5}}>
+            <View style = {{flex:0.6}}>
+                <Text>
+                </Text>
+            </View>
+            <View style = {{flex : 0.35}}>
+                <Text style = {{fontSize : 13}}>
+                    {link.style}
+                </Text>
+            </View>
+        </View>
+    </View>
+)
 
 export default RcTab
 
