@@ -1,5 +1,5 @@
 import React from "react";
-import {View, Text, StyleSheet, TextInput, TouchableHighlight, Image} from "react-native";
+import {View, Text, StyleSheet, TextInput, TouchableHighlight, Image, ActivityIndicator} from "react-native";
 import axios from "axios";
 import Layout from "../constants/Layout"
 import {recommend} from "../api";
@@ -48,7 +48,9 @@ export default class a extends React.Component{
         idCheck : false,
         idc : "1",
         pwc : "1",
-        namec : "1"
+        namec : "1",
+        loading : false,
+        sign : false
     };
     color = (code) => {
         if(code == 1){
@@ -74,18 +76,21 @@ export default class a extends React.Component{
         }
     };
     async duplicateCheck(){
+        this.setState({loading : true})
         const { id, idCheck} = this.state;
         const result = await recommend.checkID(id);
         if(!result.data.isDuplicate && idCheck){
             this.setState({
                 legal : true,
-                idc : "3"
+                idc : "3",
+                loading : false
             })
         }
         else{
             this.setState({
                 legal : false,
-                idc : "2"
+                idc : "2",
+                loading : false
             })
         }
     }
@@ -102,6 +107,7 @@ export default class a extends React.Component{
         })
     }
     confirm = () => {
+        this.setState({sign : true})
         const {legal} = this.state;
         const {navigation} = this.props;
 
@@ -131,12 +137,13 @@ export default class a extends React.Component{
             ));
         }
         else{
+            this.setState({sign : false})
             alert("아이디를 확인해주세요.")
         }
     }
     render(){
         var text;
-        const {idCheck, legal, idc, pwc, namec} = this.state;
+        const {idCheck, legal, idc, pwc, namec, loading, sign} = this.state;
         idColor = this.color(idc);
         pwColor = this.color(pwc);
         nameColor = this.color(namec);
@@ -161,6 +168,7 @@ export default class a extends React.Component{
                             onEndEditing  = {() => this.duplicateCheck()}
                             />
                         </View>
+                        {loading ? <ActivityIndicator size="small" color="black" /> : null}
                         {idc == 2 && !legal ?
                             (<>
                             <Text>
@@ -200,7 +208,9 @@ export default class a extends React.Component{
                     </View>
                 </View>
                 <View style = {styles.signin}>
-                    <TouchableHighlight
+                    {sign ? 
+                    <ActivityIndicator size="large" color="white" />
+                    : <TouchableHighlight
                         onPress={() => {
                             this.confirm();
                         }}
@@ -210,6 +220,7 @@ export default class a extends React.Component{
                             회원가입
                         </Text>
                     </TouchableHighlight>
+                    }
                 </View>
             </View>
         )
