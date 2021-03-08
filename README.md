@@ -33,10 +33,10 @@
 탭 네비게이터를 이용하여, 홈 화면과 코디 추천, 그리고 마이페이지를 분기합니다. 상단의 각 부위별 의류는 슬라이딩 탭 네비게이터로 구현되어 있습니다. 
 
 ## 컨탠츠
-<div style="display:flex; justify-content:space-around;">
+<p align="center">
     <image src="./intro_image/recommend.jpeg" height="500px">
     <image src="./intro_image/clothes.png" height="500px">
-</div>
+</p>
 <br>
 
 >전체 코디를 추천해줍니다. 체형에 맞는 태그를 분류합니다.
