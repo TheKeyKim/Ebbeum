@@ -21,17 +21,20 @@
 - 체형 입력을 통한 옷 추천 서비스
 
 ## 메인화면
-<div style="display:flex; align-items:center; justify-content:center;">
-    <image src="./intro_image/Loading.png" style="height :500px;">
-</div>
+<p align="center">
+    <image src="./intro_image/Loading.png" height="500px">
+</p>
+
 
 ## 마이페이지
-<div style="display:flex; align-items:center; justify-content:center;">
-    <image src="./intro_image/mypage.png" style="height : 500px">
-</div>
-<div style="display:flex; align-items:center; justify-content:center;">
-    <image src="./intro_image/setting.png" style="height : 500px">
-</div>
+<p align="center">
+    <image src="./intro_image/mypage.png" height="500px">
+</p>
+
+<p align="center">
+    <image src="./intro_image/setting.png" height="500px">
+</p>
+
 
 ## 컨탠츠
 <p align="center">
