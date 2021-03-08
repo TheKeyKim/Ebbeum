@@ -22,13 +22,11 @@
 - 체형 입력을 통한 옷 추천 서비스
 
 ## 메인화면
-********
 <div style="display:flex; align-items:center; justify-content:center;">
-    <image src="./intro_image/Loading.png" style="height : 500px">
+    <image src="./intro_image/Loading.png" style="height :500px;">
 </div>
 
 ## 마이페이지
-********
 <div style="display:flex; align-items:center; justify-content:center;">
     <image src="./intro_image/mypage.png" style="height : 500px">
 </div>
@@ -37,7 +35,6 @@
 </div>
 
 ## 컨탠츠
-********
 <div style="display:flex; align-items:center; justify-content:center;">
     <image src="./intro_image/clothes.png" style="height : 500px">
 </div>
