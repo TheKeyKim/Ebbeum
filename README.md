@@ -1,5 +1,4 @@
 # Ebbeum
-********************************
 ![Alt text](/assets/icon.png)
 
 ## 목차
