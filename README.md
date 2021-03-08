@@ -35,6 +35,7 @@
 </div>
 
 ## 컨탠츠
-<div style="display:flex; align-items:center; justify-content:center;">
+<p align="center">
     <image src="./intro_image/clothes.png" style="height : 500px">
-</div>
+</p>
+
