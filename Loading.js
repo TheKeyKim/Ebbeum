@@ -18,6 +18,7 @@ const Loading = () => (
         <LdImage source = 
         {require("./assets/loading.png")}
         />
+        
     </Content>
 );
 
