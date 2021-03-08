@@ -20,6 +20,10 @@
 
 ## 메인화면
 ![](/intro_image/Loading.png)
+<div style="display:flex; align-items:center;">
+    <image src="./intro_image/Loading.png" style="height : 50%; width:50%;">
+</div>
+
 
 ## 마이페이지
 
