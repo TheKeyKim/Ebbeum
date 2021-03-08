@@ -5,8 +5,9 @@
 [Features](#Features) <br>
 [Introduction](#Intro) <br>
 [메인화면](#메인화면) <br>
+[컨탠츠](#컨탠츠) <br>
+[로그인,회원가입](#로그인,회원가입)<br>
 [마이페이지](#마이페이지) <br>
-[컨탠츠](#컨탠츠)
 
 ## Features
 - 탭 네비게이션
@@ -36,15 +37,26 @@
     <image src="./intro_image/recommend.jpeg" height="500px">
     <image src="./intro_image/clothes.png" height="500px">
 </div>
+<br>
+
+>전체 코디를 추천해줍니다. 체형에 맞는 태그를 분류합니다.
+
+>탭 네비게이터의 각 옷 상세 분류에 따라 옷을 추천해줍니다. 옷에 태그를 분류하여, 태그를 출력합니다. 체형에 맞는 태그의 옷들을 불러옵니다.
+
+## 로그인,회원가입
+<p align="center">
+    <image src="./intro_image/login.jpeg" height="500px">
+    <image src="./intro_image/signin.jpeg" height="500px">
+
+</p>
+로그인을 통한 회원 접속, 그리고 비회원 접속이 가능합니다. 회원의 경우, 기존에 저장해두었던 체형 정보를 서버에 저장하여, api통신을 통하여 읽어 들입니다. 암호화 로직이 미완성 된 상태입니다. 아이디 및 비밀번호의 규정이 맞으면 테두리가 초록색으로, 적합하지 않으면 빨간색으로 변합니다.
 
 ## 마이페이지
 <p align="center">
     <image src="./intro_image/mypage.png" height="500px">
-</p>
-마이페이지는 로그인 
-<p align="center">
     <image src="./intro_image/setting.png" height="500px">
 </p>
+마이페이지에서는 로그인을 할 수 있고, 비회원으로도 체형정보를 직접 저장하여 어플리케이션을 사용할 수 있습니다.
 
 
 
