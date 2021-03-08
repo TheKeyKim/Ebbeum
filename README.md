@@ -36,6 +36,6 @@
 
 ## 컨탠츠
 <p align="center">
-    <image src="./intro_image/clothes.png" style="height : 500px">
+    <image src="./intro_image/clothes.png" height: 500px>
 </p>
 
