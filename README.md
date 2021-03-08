@@ -6,7 +6,7 @@
 [Introduction](#Intro) <br>
 [메인화면](#메인화면) <br>
 [컨탠츠](#컨탠츠) <br>
-[로그인,회원가입](#로그인+회원가입)<br>
+[로그인](#로그인)<br>
 [마이페이지](#마이페이지) <br>
 
 ## Features
@@ -46,7 +46,7 @@
 
 >탭 네비게이터의 각 옷 상세 분류에 따라 옷을 추천해줍니다. 옷에 태그를 분류하여, 태그를 출력합니다. 체형에 맞는 태그의 옷들을 불러옵니다.
 
-## 로그인+회원가입
+## 로그인
 <p align="center">
     <image src="./intro_image/login.jpeg" height="500px">
     <image src="./intro_image/signin.jpeg" height="500px">
